@@ -1,0 +1,5 @@
+,books,dvd,electronics,kitchen
+books,1.0,0.22,0.1,0.14
+dvd,0.22,1.0,0.11,0.18
+electronics,0.1,0.11,1.0,0.25
+kitchen,0.14,0.18,0.25,1.0

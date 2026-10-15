@@ -1,0 +1,20 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install requirements (CPU PyTorch, without the large transformer model)
+        run: |
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          grep -v en_core_web_trf requirements.txt > requirements-ci.txt
+          pip install -r requirements-ci.txt
+      - run: python -m unittest discover -s tests -v
